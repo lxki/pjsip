@@ -1,3 +1,9 @@
 *.sublime-project
 *.sublime-workspace
 pjlib/include/pj/config_site.h
+build.mak
+config.log
+config.status
+*-auto.mak
+*_auto.h
+sip_autoconf.h

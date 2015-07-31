@@ -307,6 +307,14 @@ PJ_DECL(pj_status_t) pjmedia_transport_srtp_decrypt_pkt(pjmedia_transport *tp,
 PJ_DECL(pjmedia_transport*) pjmedia_transport_srtp_get_member(
 						    pjmedia_transport *srtp);
 
+/**
+ * Forces use of given keys for srtp encryption.
+ */
+PJ_DECL(pj_status_t) pjmedia_transport_srtp_force_keys(
+                            pjmedia_transport *tp, 
+                            const pj_str_t *b64_tx_key, 
+                            const pj_str_t *b64_rx_key);
+
 
 PJ_END_DECL
 

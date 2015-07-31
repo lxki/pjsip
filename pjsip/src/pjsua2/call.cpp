@@ -720,3 +720,22 @@ void Call::processStateChange(OnCallStateParam &prm)
      * by the application in the callback, so do not access it anymore here.
      */
 }
+
+void Call::forceSrtpKeys(MediaTransport tp, const string &tx_key, const string &rx_key)
+{
+    Endpoint::instance().utilLogWrite(4, "Call", "srtpForceKeys, tx_key: " + tx_key + ", rx_key: " + rx_key);
+
+    pjmedia_transport *pj_tp = (pjmedia_transport*)tp;
+
+    // transport's type for some reason is PJMEDIA_TRANSPORT_TYPE_UDP
+    // so check type by name (strp transport has "srtp" prefix)
+    if (string(pj_tp->name).find("srtp") != 0) {
+        Endpoint::instance().utilLogWrite(4, "Call", "WARNING: forceSrtpKeys called for non-srtp transport");
+        return;
+    }
+
+    pj_str_t pj_tx_key = str2Pj(tx_key);
+    pj_str_t pj_rx_key = str2Pj(rx_key);
+
+    pjmedia_transport_srtp_force_keys(pj_tp, &pj_tx_key, &pj_rx_key);
+}

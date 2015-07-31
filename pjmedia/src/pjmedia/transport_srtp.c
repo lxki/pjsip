@@ -125,6 +125,10 @@ typedef struct transport_srtp
     pjmedia_srtp_crypto  tx_policy_neg;
     pjmedia_srtp_crypto  rx_policy_neg;
 
+    /* Forced policy for negotiation */
+    pjmedia_srtp_crypto  forced_tx_policy;
+    pjmedia_srtp_crypto  forced_rx_policy;
+
     /* libSRTP contexts */
     srtp_t                 srtp_tx_ctx;
     srtp_t                 srtp_rx_ctx;
@@ -165,6 +169,9 @@ static void srtp_rtp_cb( void *user_data, void *pkt, pj_ssize_t size);
  */
 static void srtp_rtcp_cb( void *user_data, void *pkt, pj_ssize_t size);
 
+static pj_status_t srtp_init_crypto_key(pj_pool_t *sdp_pool,
+                                        pjmedia_srtp_crypto *crypto, 
+                                        const pj_str_t *b64_key);
 
 /*
  * These are media transport operations.
@@ -1680,9 +1687,17 @@ static pj_status_t transport_media_start(pjmedia_transport *tp,
     if (srtp_crypto_cmp(&srtp->tx_policy_neg, &srtp->tx_policy) ||
         srtp_crypto_cmp(&srtp->rx_policy_neg, &srtp->rx_policy))
     {
-        status = pjmedia_transport_srtp_start(tp,
-                                              &srtp->tx_policy_neg,
-                                              &srtp->rx_policy_neg);
+        pjmedia_srtp_crypto *tx_policy = 
+            !srtp_crypto_empty(&srtp->forced_tx_policy)
+                ? &srtp->forced_tx_policy
+                : &srtp->tx_policy_neg;
+
+        pjmedia_srtp_crypto *rx_policy = 
+            !srtp_crypto_empty(&srtp->forced_rx_policy)
+                ? &srtp->forced_rx_policy
+                : &srtp->rx_policy_neg;
+
+        status = pjmedia_transport_srtp_start(tp, tx_policy, rx_policy);
         if (status != PJ_SUCCESS)
             return status;
     }
@@ -1758,6 +1773,56 @@ PJ_DEF(pj_status_t) pjmedia_transport_srtp_decrypt_pkt(pjmedia_transport *tp,
     pj_lock_release(srtp->mutex);
 
     return (err==err_status_ok) ? PJ_SUCCESS : PJMEDIA_ERRNO_FROM_LIBSRTP(err);
+}
+
+PJ_DEF(pj_status_t) pjmedia_transport_srtp_force_keys(
+                            pjmedia_transport *tp, 
+                            const pj_str_t *b64_tx_key, 
+                            const pj_str_t *b64_rx_key)
+{
+    pj_status_t status;
+
+    PJ_LOG(4, (THIS_FILE, "pjmedia_transport_srtp_force_keys, tx_key: %s rx_key: %s", 
+                           b64_tx_key->ptr, b64_rx_key->ptr));
+
+    transport_srtp *srtp = (transport_srtp*)tp;
+    
+    status = srtp_init_crypto_key(srtp->pool, &srtp->forced_tx_policy, b64_tx_key);
+    if (status != PJ_SUCCESS)
+    {
+        PJ_LOG(4, (THIS_FILE, "Failed setting tx_key"));
+        return status;
+    }
+
+    status = srtp_init_crypto_key(srtp->pool, &srtp->forced_rx_policy, b64_rx_key);
+    if (status != PJ_SUCCESS)
+    {
+        PJ_LOG(4, (THIS_FILE, "Failed setting rx_key"));
+        return status;
+    }
+
+    return PJ_SUCCESS;
+}
+
+static pj_status_t srtp_init_crypto_key(pj_pool_t *sdp_pool,
+                                        pjmedia_srtp_crypto *crypto,
+                                        const pj_str_t *b64_key)
+{
+    int key_len = MAX_KEY_LEN;
+    pj_status_t status;
+
+    crypto->name = pj_str("AES_CM_128_HMAC_SHA1_80");
+
+    crypto->key.ptr = (char*)pj_pool_zalloc(sdp_pool, MAX_KEY_LEN);
+    status = pj_base64_decode(b64_key, (pj_uint8_t*)crypto->key.ptr, &key_len);
+    if (status != PJ_SUCCESS)
+    {
+        PJ_LOG(4, (THIS_FILE, "Failed decoding crypto key from base64"));
+        return status;
+    }
+    crypto->key.slen = key_len;
+
+    return PJ_SUCCESS;
 }
 
 #endif

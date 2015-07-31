@@ -1476,6 +1476,11 @@ public:
      * Internal function (called by Endpoint) to process call state change.
      */
     void processStateChange(OnCallStateParam &prm);
+
+    /**
+     * Forces srtp transport encryption keys.
+     */
+    void forceSrtpKeys(MediaTransport tp, const string &tx_key, const string &rx_key);
     
 public:
     /*

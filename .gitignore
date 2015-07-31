@@ -10,3 +10,4 @@ sip_autoconf.h
 *.a
 *.o
 bin/
+*.depend

@@ -1315,6 +1315,10 @@ private:
                               pjmedia_transport *base_tp,
                               unsigned flags);
 
+    static void on_start_media_transport(pjsua_call_id call_id, 
+                                         unsigned media_idx, 
+                                         pjmedia_transport *tp);
+
 private:
     void clearCodecInfoList();
 

@@ -944,6 +944,12 @@ struct OnCreateMediaTransportParam
     unsigned        flags;
 };
 
+struct OnStartMediaTransportParam
+{
+    unsigned mediaIdx;
+    MediaTransport mediaTp;
+};
+
 /**
  * @}  // PJSUA2_Call_Data_Structure
  */
@@ -1716,6 +1722,9 @@ public:
     virtual void
     onCreateMediaTransport(OnCreateMediaTransportParam &prm)
     { PJ_UNUSED_ARG(prm); }
+
+    virtual void onStartMediaTransport(OnStartMediaTransportParam &prm)
+    { PJ_UNUSED_ARG(prm); };
 
 private:
     Account             &acc;

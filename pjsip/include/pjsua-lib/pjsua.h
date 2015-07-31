@@ -1331,6 +1331,13 @@ typedef struct pjsua_callback
                                                     unsigned flags);
 
     /**
+     * This callback is called before media transport is started.
+     */
+    void (*on_start_media_transport)(pjsua_call_id call_id, 
+                                     unsigned media_idx, 
+                                     pjmedia_transport *tp);
+
+    /**
      * This callback can be used by application to override the account
      * to be used to handle an incoming message. Initially, the account to
      * be used will be calculated automatically by the library. This initial

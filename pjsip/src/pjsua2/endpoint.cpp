@@ -28,16 +28,16 @@ using namespace std;
 
 #include <pjsua-lib/pjsua_internal.h>   /* For retrieving pjsua threads */
 
-#define THIS_FILE		"endpoint.cpp"
-#define MAX_STUN_SERVERS	32
-#define TIMER_SIGNATURE		0x600D878A
-#define MAX_CODEC_NUM 		64
+#define THIS_FILE                "endpoint.cpp"
+#define MAX_STUN_SERVERS        32
+#define TIMER_SIGNATURE                0x600D878A
+#define MAX_CODEC_NUM                 64
 
 struct UserTimer
 {
-    pj_uint32_t		signature;
-    OnTimerParam	prm;
-    pj_timer_entry	entry;
+    pj_uint32_t                signature;
+    OnTimerParam        prm;
+    pj_timer_entry        entry;
 };
 
 Endpoint *Endpoint::instance_;
@@ -61,11 +61,11 @@ void UaConfig::fromPj(const pjsua_config &ua_cfg)
     this->userAgent = pj2Str(ua_cfg.user_agent);
 
     for (i=0; i<ua_cfg.nameserver_count; ++i) {
-	this->nameserver.push_back(pj2Str(ua_cfg.nameserver[i]));
+        this->nameserver.push_back(pj2Str(ua_cfg.nameserver[i]));
     }
 
     for (i=0; i<ua_cfg.stun_srv_cnt; ++i) {
-	this->stunServer.push_back(pj2Str(ua_cfg.stun_srv[i]));
+        this->stunServer.push_back(pj2Str(ua_cfg.stun_srv[i]));
     }
 
     this->stunIgnoreFailure = PJ2BOOL(ua_cfg.stun_ignore_failure);
@@ -85,16 +85,16 @@ pjsua_config UaConfig::toPj() const
     pua_cfg.user_agent = str2Pj(this->userAgent);
 
     for (i=0; i<this->nameserver.size() && i<PJ_ARRAY_SIZE(pua_cfg.nameserver);
-	 ++i)
+         ++i)
     {
-	pua_cfg.nameserver[i] = str2Pj(this->nameserver[i]);
+        pua_cfg.nameserver[i] = str2Pj(this->nameserver[i]);
     }
     pua_cfg.nameserver_count = i;
 
     for (i=0; i<this->stunServer.size() && i<PJ_ARRAY_SIZE(pua_cfg.stun_srv);
-	 ++i)
+         ++i)
     {
-	pua_cfg.stun_srv[i] = str2Pj(this->stunServer[i]);
+        pua_cfg.stun_srv[i] = str2Pj(this->stunServer[i]);
     }
     pua_cfg.stun_srv_cnt = i;
 
@@ -348,8 +348,8 @@ struct PendingLog : public PendingJob
     LogEntry entry;
     virtual void execute(bool is_pending)
     {
-	PJ_UNUSED_ARG(is_pending);
-	Endpoint::instance().utilLogWrite(entry);
+        PJ_UNUSED_ARG(is_pending);
+        Endpoint::instance().utilLogWrite(entry);
     }
 };
 
@@ -361,7 +361,7 @@ Endpoint::Endpoint()
 : writer(NULL), mainThreadOnly(false), mainThread(NULL), pendingJobSize(0)
 {
     if (instance_) {
-	PJSUA2_RAISE_ERROR(PJ_EEXISTS);
+        PJSUA2_RAISE_ERROR(PJ_EEXISTS);
     }
 
     instance_ = this;
@@ -370,7 +370,7 @@ Endpoint::Endpoint()
 Endpoint& Endpoint::instance() throw(Error)
 {
     if (!instance_) {
-	PJSUA2_RAISE_ERROR(PJ_ENOTFOUND);
+        PJSUA2_RAISE_ERROR(PJ_ENOTFOUND);
     }
     return *instance_;
 }
@@ -378,22 +378,22 @@ Endpoint& Endpoint::instance() throw(Error)
 Endpoint::~Endpoint()
 {
     while (!pendingJobs.empty()) {
-	delete pendingJobs.front();
-	pendingJobs.pop_front();
+        delete pendingJobs.front();
+        pendingJobs.pop_front();
     }
 
     while(mediaList.size() > 0) {
-	AudioMedia *cur_media = mediaList[0];
-	delete cur_media; /* this will remove itself from the list */
+        AudioMedia *cur_media = mediaList[0];
+        delete cur_media; /* this will remove itself from the list */
     }
 
     clearCodecInfoList();
 
     try {
-	libDestroy();
+        libDestroy();
     } catch (Error &err) {
-	// Ignore
-	PJ_UNUSED_ARG(err);
+        // Ignore
+        PJ_UNUSED_ARG(err);
     }
 
     instance_ = NULL;
@@ -402,30 +402,30 @@ Endpoint::~Endpoint()
 void Endpoint::utilAddPendingJob(PendingJob *job)
 {
     enum {
-	MAX_PENDING_JOBS = 1024
+        MAX_PENDING_JOBS = 1024
     };
 
     /* See if we can execute immediately */
     if (!mainThreadOnly || pj_thread_this()==mainThread) {
-	job->execute(false);
-	delete job;
-	return;
+        job->execute(false);
+        delete job;
+        return;
     }
 
     if (pendingJobSize > MAX_PENDING_JOBS) {
-	enum { NUMBER_TO_DISCARD = 5 };
+        enum { NUMBER_TO_DISCARD = 5 };
 
-	pj_enter_critical_section();
-	for (unsigned i=0; i<NUMBER_TO_DISCARD; ++i) {
-	    delete pendingJobs.back();
-	    pendingJobs.pop_back();
-	}
+        pj_enter_critical_section();
+        for (unsigned i=0; i<NUMBER_TO_DISCARD; ++i) {
+            delete pendingJobs.back();
+            pendingJobs.pop_back();
+        }
 
-	pendingJobSize -= NUMBER_TO_DISCARD;
-	pj_leave_critical_section();
+        pendingJobSize -= NUMBER_TO_DISCARD;
+        pj_leave_critical_section();
 
-	utilLogWrite(1, THIS_FILE,
-	             "*** ERROR: Job queue full!! Jobs discarded!!! ***");
+        utilLogWrite(1, THIS_FILE,
+                     "*** ERROR: Job queue full!! Jobs discarded!!! ***");
     }
 
     pj_enter_critical_section();
@@ -438,11 +438,11 @@ void Endpoint::utilAddPendingJob(PendingJob *job)
 void Endpoint::utilLogWrite(LogEntry &entry)
 {
     if (mainThreadOnly && pj_thread_this() != mainThread) {
-	PendingLog *job = new PendingLog;
-	job->entry = entry;
-	utilAddPendingJob(job);
+        PendingLog *job = new PendingLog;
+        job->entry = entry;
+        utilAddPendingJob(job);
     } else {
-	writer->write(entry);
+        writer->write(entry);
     }
 }
 
@@ -450,27 +450,27 @@ void Endpoint::utilLogWrite(LogEntry &entry)
 void Endpoint::performPendingJobs()
 {
     if (pj_thread_this() != mainThread)
-	return;
+        return;
 
     if (pendingJobSize == 0)
-	return;
+        return;
 
     for (;;) {
-	PendingJob *job = NULL;
+        PendingJob *job = NULL;
 
-	pj_enter_critical_section();
-	if (pendingJobSize != 0) {
-	    job = pendingJobs.front();
-	    pendingJobs.pop_front();
-	    pendingJobSize--;
-	}
-	pj_leave_critical_section();
+        pj_enter_critical_section();
+        if (pendingJobSize != 0) {
+            job = pendingJobs.front();
+            pendingJobs.pop_front();
+            pendingJobSize--;
+        }
+        pj_leave_critical_section();
 
-	if (job) {
-	    job->execute(true);
-	    delete job;
-	} else
-	    break;
+        if (job) {
+            job->execute(true);
+            delete job;
+        } else
+            break;
     }
 }
 
@@ -483,7 +483,7 @@ void Endpoint::logFunc(int level, const char *data, int len)
     Endpoint &ep = Endpoint::instance();
 
     if (!ep.writer)
-	return;
+        return;
 
     LogEntry entry;
     entry.level = level;
@@ -499,18 +499,18 @@ void Endpoint::stun_resolve_cb(const pj_stun_resolve_result *res)
     Endpoint &ep = Endpoint::instance();
 
     if (!res)
-	return;
+        return;
 
     OnNatCheckStunServersCompleteParam prm;
 
     prm.userData = res->token;
     prm.status = res->status;
     if (res->status == PJ_SUCCESS) {
-	char straddr[PJ_INET6_ADDRSTRLEN+10];
+        char straddr[PJ_INET6_ADDRSTRLEN+10];
 
-	prm.name = string(res->name.ptr, res->name.slen);
-	pj_sockaddr_print(&res->addr, straddr, sizeof(straddr), 3);
-	prm.addr = straddr;
+        prm.name = string(res->name.ptr, res->name.slen);
+        pj_sockaddr_print(&res->addr, straddr, sizeof(straddr), 3);
+        prm.addr = straddr;
     }
 
     ep.onNatCheckStunServersComplete(prm);
@@ -525,7 +525,7 @@ void Endpoint::on_timer(pj_timer_heap_t *timer_heap,
     UserTimer *ut = (UserTimer*) entry->user_data;
 
     if (ut->signature != TIMER_SIGNATURE)
-	return;
+        return;
 
     ep.onTimer(ut->prm);
 }
@@ -535,7 +535,7 @@ void Endpoint::on_nat_detect(const pj_stun_nat_detect_result *res)
     Endpoint &ep = Endpoint::instance();
 
     if (!res)
-	return;
+        return;
 
     OnNatDetectionCompleteParam prm;
 
@@ -548,8 +548,8 @@ void Endpoint::on_nat_detect(const pj_stun_nat_detect_result *res)
 }
 
 void Endpoint::on_transport_state( pjsip_transport *tp,
-				   pjsip_transport_state state,
-				   const pjsip_transport_state_info *info)
+                                   pjsip_transport_state state,
+                                   const pjsip_transport_state_info *info)
 {
     Endpoint &ep = Endpoint::instance();
 
@@ -571,9 +571,9 @@ Account *Endpoint::lookupAcc(int acc_id, const char *op)
 {
     Account *acc = Account::lookup(acc_id);
     if (!acc) {
-	PJ_LOG(1,(THIS_FILE,
-		  "Error: cannot find Account instance for account id %d in "
-		  "%s", acc_id, op));
+        PJ_LOG(1,(THIS_FILE,
+                  "Error: cannot find Account instance for account id %d in "
+                  "%s", acc_id, op));
     }
 
     return acc;
@@ -583,9 +583,9 @@ Call *Endpoint::lookupCall(int call_id, const char *op)
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	PJ_LOG(1,(THIS_FILE,
-		  "Error: cannot find Call instance for call id %d in "
-		  "%s", call_id, op));
+        PJ_LOG(1,(THIS_FILE,
+                  "Error: cannot find Call instance for call id %d in "
+                  "%s", call_id, op));
     }
 
     return call;
@@ -596,8 +596,8 @@ void Endpoint::on_incoming_call(pjsua_acc_id acc_id, pjsua_call_id call_id,
 {
     Account *acc = lookupAcc(acc_id, "on_incoming_call()");
     if (!acc) {
-	pjsua_call_hangup(call_id, PJSIP_SC_INTERNAL_SERVER_ERROR, NULL, NULL);
-	return;
+        pjsua_call_hangup(call_id, PJSIP_SC_INTERNAL_SERVER_ERROR, NULL, NULL);
+        return;
     }
 
     /* call callback */
@@ -612,9 +612,9 @@ void Endpoint::on_incoming_call(pjsua_acc_id acc_id, pjsua_call_id call_id,
 
     pjsua_call_get_info(call_id, &ci);
     if (!pjsua_call_get_user_data(call_id) &&
-	ci.state != PJSIP_INV_STATE_DISCONNECTED)
+        ci.state != PJSIP_INV_STATE_DISCONNECTED)
     {
-	pjsua_call_hangup(call_id, PJSIP_SC_INTERNAL_SERVER_ERROR, NULL, NULL);
+        pjsua_call_hangup(call_id, PJSIP_SC_INTERNAL_SERVER_ERROR, NULL, NULL);
     }
 }
 
@@ -622,7 +622,7 @@ void Endpoint::on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew)
 {
     Account *acc = lookupAcc(acc_id, "on_reg_started()");
     if (!acc) {
-	return;
+        return;
     }
 
     OnRegStartedParam prm;
@@ -634,16 +634,16 @@ void Endpoint::on_reg_state2(pjsua_acc_id acc_id, pjsua_reg_info *info)
 {
     Account *acc = lookupAcc(acc_id, "on_reg_state2()");
     if (!acc) {
-	return;
+        return;
     }
 
     OnRegStateParam prm;
-    prm.status		= info->cbparam->status;
-    prm.code 		= (pjsip_status_code) info->cbparam->code;
-    prm.reason		= pj2Str(info->cbparam->reason);
+    prm.status                = info->cbparam->status;
+    prm.code                 = (pjsip_status_code) info->cbparam->code;
+    prm.reason                = pj2Str(info->cbparam->reason);
     if (info->cbparam->rdata)
-	prm.rdata.fromPj(*info->cbparam->rdata);
-    prm.expiration	= info->cbparam->expiration;
+        prm.rdata.fromPj(*info->cbparam->rdata);
+    prm.expiration        = info->cbparam->expiration;
 
     acc->onRegState(prm);
 }
@@ -662,16 +662,16 @@ void Endpoint::on_incoming_subscribe(pjsua_acc_id acc_id,
 
     Account *acc = lookupAcc(acc_id, "on_incoming_subscribe()");
     if (!acc) {
-	/* default behavior should apply */
-	return;
+        /* default behavior should apply */
+        return;
     }
 
     OnIncomingSubscribeParam prm;
-    prm.srvPres		= srv_pres;
-    prm.fromUri 	= pj2Str(*from);
+    prm.srvPres                = srv_pres;
+    prm.fromUri         = pj2Str(*from);
     prm.rdata.fromPj(*rdata);
-    prm.code		= *code;
-    prm.reason		= pj2Str(*reason);
+    prm.code                = *code;
+    prm.reason                = pj2Str(*reason);
     prm.txOption.fromPj(*msg_data);
 
     acc->onIncomingSubscribe(prm);
@@ -692,103 +692,103 @@ void Endpoint::on_pager2(pjsua_call_id call_id,
                          pjsua_acc_id acc_id)
 {
     OnInstantMessageParam prm;
-    prm.fromUri		= pj2Str(*from);
-    prm.toUri		= pj2Str(*to);
-    prm.contactUri	= pj2Str(*contact);
-    prm.contentType	= pj2Str(*mime_type);
-    prm.msgBody		= pj2Str(*body);
+    prm.fromUri                = pj2Str(*from);
+    prm.toUri                = pj2Str(*to);
+    prm.contactUri        = pj2Str(*contact);
+    prm.contentType        = pj2Str(*mime_type);
+    prm.msgBody                = pj2Str(*body);
     prm.rdata.fromPj(*rdata);
 
     if (call_id != PJSUA_INVALID_ID) {
-	Call *call = lookupCall(call_id, "on_pager2()");
-	if (!call) {
-	    /* Ignored */
-	    return;
-	}
+        Call *call = lookupCall(call_id, "on_pager2()");
+        if (!call) {
+            /* Ignored */
+            return;
+        }
 
-	call->onInstantMessage(prm);
+        call->onInstantMessage(prm);
     } else {
-	Account *acc = lookupAcc(acc_id, "on_pager2()");
-	if (!acc) {
-	    /* Ignored */
-	    return;
-	}
+        Account *acc = lookupAcc(acc_id, "on_pager2()");
+        if (!acc) {
+            /* Ignored */
+            return;
+        }
 
-	acc->onInstantMessage(prm);
+        acc->onInstantMessage(prm);
     }
 }
 
 void Endpoint::on_pager_status2( pjsua_call_id call_id,
-				 const pj_str_t *to,
-				 const pj_str_t *body,
-				 void *user_data,
-				 pjsip_status_code status,
-				 const pj_str_t *reason,
-				 pjsip_tx_data *tdata,
-				 pjsip_rx_data *rdata,
-				 pjsua_acc_id acc_id)
+                                 const pj_str_t *to,
+                                 const pj_str_t *body,
+                                 void *user_data,
+                                 pjsip_status_code status,
+                                 const pj_str_t *reason,
+                                 pjsip_tx_data *tdata,
+                                 pjsip_rx_data *rdata,
+                                 pjsua_acc_id acc_id)
 {
     PJ_UNUSED_ARG(tdata);
 
     OnInstantMessageStatusParam prm;
-    prm.userData	= user_data;
-    prm.toUri		= pj2Str(*to);
-    prm.msgBody		= pj2Str(*body);
-    prm.code		= status;
-    prm.reason		= pj2Str(*reason);
+    prm.userData        = user_data;
+    prm.toUri                = pj2Str(*to);
+    prm.msgBody                = pj2Str(*body);
+    prm.code                = status;
+    prm.reason                = pj2Str(*reason);
     if (rdata)
-	prm.rdata.fromPj(*rdata);
+        prm.rdata.fromPj(*rdata);
 
     if (call_id != PJSUA_INVALID_ID) {
-	Call *call = lookupCall(call_id, "on_pager_status2()");
-	if (!call) {
-	    /* Ignored */
-	    return;
-	}
+        Call *call = lookupCall(call_id, "on_pager_status2()");
+        if (!call) {
+            /* Ignored */
+            return;
+        }
 
-	call->onInstantMessageStatus(prm);
+        call->onInstantMessageStatus(prm);
     } else {
-	Account *acc = lookupAcc(acc_id, "on_pager_status2()");
-	if (!acc) {
-	    /* Ignored */
-	    return;
-	}
+        Account *acc = lookupAcc(acc_id, "on_pager_status2()");
+        if (!acc) {
+            /* Ignored */
+            return;
+        }
 
-	acc->onInstantMessageStatus(prm);
+        acc->onInstantMessageStatus(prm);
     }
 }
 
 void Endpoint::on_typing2( pjsua_call_id call_id,
-			   const pj_str_t *from,
-			   const pj_str_t *to,
-			   const pj_str_t *contact,
-			   pj_bool_t is_typing,
-			   pjsip_rx_data *rdata,
-			   pjsua_acc_id acc_id)
+                           const pj_str_t *from,
+                           const pj_str_t *to,
+                           const pj_str_t *contact,
+                           pj_bool_t is_typing,
+                           pjsip_rx_data *rdata,
+                           pjsua_acc_id acc_id)
 {
     OnTypingIndicationParam prm;
-    prm.fromUri		= pj2Str(*from);
-    prm.toUri		= pj2Str(*to);
-    prm.contactUri	= pj2Str(*contact);
-    prm.isTyping	= is_typing != 0;
+    prm.fromUri                = pj2Str(*from);
+    prm.toUri                = pj2Str(*to);
+    prm.contactUri        = pj2Str(*contact);
+    prm.isTyping        = is_typing != 0;
     prm.rdata.fromPj(*rdata);
 
     if (call_id != PJSUA_INVALID_ID) {
-	Call *call = lookupCall(call_id, "on_typing2()");
-	if (!call) {
-	    /* Ignored */
-	    return;
-	}
+        Call *call = lookupCall(call_id, "on_typing2()");
+        if (!call) {
+            /* Ignored */
+            return;
+        }
 
-	call->onTypingIndication(prm);
+        call->onTypingIndication(prm);
     } else {
-	Account *acc = lookupAcc(acc_id, "on_typing2()");
-	if (!acc) {
-	    /* Ignored */
-	    return;
-	}
+        Account *acc = lookupAcc(acc_id, "on_typing2()");
+        if (!acc) {
+            /* Ignored */
+            return;
+        }
 
-	acc->onTypingIndication(prm);
+        acc->onTypingIndication(prm);
     }
 }
 
@@ -798,17 +798,17 @@ void Endpoint::on_mwi_info(pjsua_acc_id acc_id,
     OnMwiInfoParam prm;
 
     if (mwi_info->evsub) {
-	prm.state	= pjsip_evsub_get_state(mwi_info->evsub);
+        prm.state        = pjsip_evsub_get_state(mwi_info->evsub);
     } else {
-	/* Unsolicited MWI */
-	prm.state	= PJSIP_EVSUB_STATE_NULL;
+        /* Unsolicited MWI */
+        prm.state        = PJSIP_EVSUB_STATE_NULL;
     }
     prm.rdata.fromPj(*mwi_info->rdata);
 
     Account *acc = lookupAcc(acc_id, "on_mwi_info()");
     if (!acc) {
-	/* Ignored */
-	return;
+        /* Ignored */
+        return;
     }
 
     acc->onMwiInfo(prm);
@@ -818,8 +818,8 @@ void Endpoint::on_buddy_state(pjsua_buddy_id buddy_id)
 {
     Buddy *buddy = (Buddy*)pjsua_buddy_get_user_data(buddy_id);
     if (!buddy || !buddy->isValid()) {
-	/* Ignored */
-	return;
+        /* Ignored */
+        return;
     }
 
     buddy->onBuddyState();
@@ -830,7 +830,7 @@ void Endpoint::on_call_state(pjsua_call_id call_id, pjsip_event *e)
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallStateParam prm;
@@ -850,7 +850,7 @@ void Endpoint::on_call_tsx_state(pjsua_call_id call_id,
 
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallTsxStateParam prm;
@@ -863,7 +863,7 @@ void Endpoint::on_call_media_state(pjsua_call_id call_id)
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
 
     OnCallMediaStateParam prm;
@@ -877,7 +877,7 @@ void Endpoint::on_call_sdp_created(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallSdpCreatedParam prm;
@@ -904,7 +904,7 @@ void Endpoint::on_stream_created(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnStreamCreatedParam prm;
@@ -924,7 +924,7 @@ void Endpoint::on_stream_destroyed(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnStreamDestroyedParam prm;
@@ -941,13 +941,13 @@ struct PendingOnDtmfDigitCallback : public PendingJob
 
     virtual void execute(bool is_pending)
     {
-	PJ_UNUSED_ARG(is_pending);
+        PJ_UNUSED_ARG(is_pending);
 
-	Call *call = Call::lookup(call_id);
-	if (!call)
-	    return;
+        Call *call = Call::lookup(call_id);
+        if (!call)
+            return;
 
-	call->onDtmfDigit(prm);
+        call->onDtmfDigit(prm);
     }
 };
 
@@ -955,7 +955,7 @@ void Endpoint::on_dtmf_digit(pjsua_call_id call_id, int digit)
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     PendingOnDtmfDigitCallback *job = new PendingOnDtmfDigitCallback;
@@ -974,7 +974,7 @@ void Endpoint::on_call_transfer_request2(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallTransferRequestParam prm;
@@ -996,7 +996,7 @@ void Endpoint::on_call_transfer_status(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallTransferStatusParam prm;
@@ -1018,7 +1018,7 @@ void Endpoint::on_call_replace_request2(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallReplaceRequestParam prm;
@@ -1039,7 +1039,7 @@ void Endpoint::on_call_replaced(pjsua_call_id old_call_id,
 {
     Call *call = Call::lookup(old_call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallReplacedParam prm;
@@ -1058,7 +1058,7 @@ void Endpoint::on_call_rx_offer(pjsua_call_id call_id,
 
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     OnCallRxOfferParam prm;
@@ -1078,7 +1078,7 @@ pjsip_redirect_op Endpoint::on_call_redirected(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return PJSIP_REDIRECT_STOP;
+        return PJSIP_REDIRECT_STOP;
     }
     
     OnCallRedirectedParam prm;
@@ -1105,13 +1105,13 @@ struct PendingOnMediaTransportCallback : public PendingJob
 
     virtual void execute(bool is_pending)
     {
-	PJ_UNUSED_ARG(is_pending);
+        PJ_UNUSED_ARG(is_pending);
 
-	Call *call = Call::lookup(call_id);
-	if (!call)
-	    return;
+        Call *call = Call::lookup(call_id);
+        if (!call)
+            return;
 
-	call->onCallMediaTransportState(prm);
+        call->onCallMediaTransportState(prm);
     }
 };
 
@@ -1121,7 +1121,7 @@ Endpoint::on_call_media_transport_state(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return PJ_SUCCESS;
+        return PJ_SUCCESS;
     }
 
     PendingOnMediaTransportCallback *job = new PendingOnMediaTransportCallback;
@@ -1144,16 +1144,16 @@ struct PendingOnMediaEventCallback : public PendingJob
 
     virtual void execute(bool is_pending)
     {
-	Call *call = Call::lookup(call_id);
-	if (!call)
-	    return;
+        Call *call = Call::lookup(call_id);
+        if (!call)
+            return;
 
-	if (is_pending) {
-	    /* Can't do this anymore, pointer is invalid */
-	    prm.ev.pjMediaEvent = NULL;
-	}
+        if (is_pending) {
+            /* Can't do this anymore, pointer is invalid */
+            prm.ev.pjMediaEvent = NULL;
+        }
 
-	call->onCallMediaEvent(prm);
+        call->onCallMediaEvent(prm);
     }
 };
 
@@ -1163,7 +1163,7 @@ void Endpoint::on_call_media_event(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return;
+        return;
     }
     
     PendingOnMediaEventCallback *job = new PendingOnMediaEventCallback;
@@ -1183,7 +1183,7 @@ Endpoint::on_create_media_transport(pjsua_call_id call_id,
 {
     Call *call = Call::lookup(call_id);
     if (!call) {
-	return base_tp;
+        return base_tp;
     }
     
     OnCreateMediaTransportParam prm;
@@ -1194,6 +1194,22 @@ Endpoint::on_create_media_transport(pjsua_call_id call_id,
     call->onCreateMediaTransport(prm);
     
     return (pjmedia_transport *)prm.mediaTp;
+}
+
+void Endpoint::on_start_media_transport(pjsua_call_id call_id, 
+                                        unsigned media_idx, 
+                                        pjmedia_transport *tp)
+{
+    Call *call = Call::lookup(call_id);
+    if (!call) {
+        return;
+    }
+
+    OnStartMediaTransportParam prm;
+    prm.mediaIdx = media_idx;
+    prm.mediaTp = tp;
+
+    call->onStartMediaTransport(prm);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1238,25 +1254,25 @@ void Endpoint::libInit(const EpConfig &prmEpConfig) throw(Error)
 
     /* Setup log callback */
     if (prmEpConfig.logConfig.writer) {
-	this->writer = prmEpConfig.logConfig.writer;
-	log_cfg.cb = &Endpoint::logFunc;
+        this->writer = prmEpConfig.logConfig.writer;
+        log_cfg.cb = &Endpoint::logFunc;
     }
     mainThreadOnly = prmEpConfig.uaConfig.mainThreadOnly;
 
     /* Setup UA callbacks */
     pj_bzero(&ua_cfg.cb, sizeof(ua_cfg.cb));
-    ua_cfg.cb.on_nat_detect 	= &Endpoint::on_nat_detect;
+    ua_cfg.cb.on_nat_detect         = &Endpoint::on_nat_detect;
     ua_cfg.cb.on_transport_state = &Endpoint::on_transport_state;
 
-    ua_cfg.cb.on_incoming_call	= &Endpoint::on_incoming_call;
-    ua_cfg.cb.on_reg_started	= &Endpoint::on_reg_started;
-    ua_cfg.cb.on_reg_state2	= &Endpoint::on_reg_state2;
+    ua_cfg.cb.on_incoming_call        = &Endpoint::on_incoming_call;
+    ua_cfg.cb.on_reg_started        = &Endpoint::on_reg_started;
+    ua_cfg.cb.on_reg_state2        = &Endpoint::on_reg_state2;
     ua_cfg.cb.on_incoming_subscribe = &Endpoint::on_incoming_subscribe;
-    ua_cfg.cb.on_pager2		= &Endpoint::on_pager2;
-    ua_cfg.cb.on_pager_status2	= &Endpoint::on_pager_status2;
-    ua_cfg.cb.on_typing2	= &Endpoint::on_typing2;
-    ua_cfg.cb.on_mwi_info	= &Endpoint::on_mwi_info;
-    ua_cfg.cb.on_buddy_state	= &Endpoint::on_buddy_state;
+    ua_cfg.cb.on_pager2                = &Endpoint::on_pager2;
+    ua_cfg.cb.on_pager_status2        = &Endpoint::on_pager_status2;
+    ua_cfg.cb.on_typing2        = &Endpoint::on_typing2;
+    ua_cfg.cb.on_mwi_info        = &Endpoint::on_mwi_info;
+    ua_cfg.cb.on_buddy_state        = &Endpoint::on_buddy_state;
 
     /* Call callbacks */
     ua_cfg.cb.on_call_state             = &Endpoint::on_call_state;
@@ -1276,6 +1292,7 @@ void Endpoint::libInit(const EpConfig &prmEpConfig) throw(Error)
         &Endpoint::on_call_media_transport_state;
     ua_cfg.cb.on_call_media_event       = &Endpoint::on_call_media_event;
     ua_cfg.cb.on_create_media_transport = &Endpoint::on_create_media_transport;
+    ua_cfg.cb.on_start_media_transport  = &Endpoint::on_start_media_transport;
 
     /* Init! */
     PJSUA2_CHECK_EXPR( pjsua_init(&ua_cfg, &log_cfg, &med_cfg) );
@@ -1283,18 +1300,18 @@ void Endpoint::libInit(const EpConfig &prmEpConfig) throw(Error)
     /* Register worker threads */
     int i = pjsua_var.ua_cfg.thread_cnt;
     while (i) {
-	pj_thread_t *t = pjsua_var.thread[--i];
-	if (t)
-	    threadDescMap[t] = NULL;
+        pj_thread_t *t = pjsua_var.thread[--i];
+        if (t)
+            threadDescMap[t] = NULL;
     }
 
     /* Register media endpoint worker thread */
     pjmedia_endpt *medept = pjsua_get_pjmedia_endpt();
     i = pjmedia_endpt_get_thread_count(medept);
     while (i) {
-	pj_thread_t *t = pjmedia_endpt_get_thread(medept, --i);
-	if (t)
-	    threadDescMap[t] = NULL;
+        pj_thread_t *t = pjmedia_endpt_get_thread(medept, --i);
+        if (t)
+            threadDescMap[t] = NULL;
     }
 }
 
@@ -1312,18 +1329,18 @@ void Endpoint::libRegisterThread(const string &name) throw(Error)
     desc = (pj_thread_desc*)malloc(sizeof(pj_thread_desc));
     status = pj_thread_register(name.c_str(), *desc, &thread);
     if (status == PJ_SUCCESS) {
-	threadDescMap[thread] = desc;
+        threadDescMap[thread] = desc;
     } else {
-	free(desc);
-	PJSUA2_RAISE_ERROR(status);
+        free(desc);
+        PJSUA2_RAISE_ERROR(status);
     }
 }
 
 bool Endpoint::libIsThreadRegistered()
 {
     if (pj_thread_is_registered()) {
-	/* Recheck again if it exists in the thread description map */
-	return (threadDescMap.find(pj_thread_this()) != threadDescMap.end());
+        /* Recheck again if it exists in the thread description map */
+        return (threadDescMap.find(pj_thread_this()) != threadDescMap.end());
     }
 
     return false;
@@ -1351,16 +1368,16 @@ void Endpoint::libDestroy(unsigned flags) throw(Error)
 
 #if PJ_LOG_MAX_LEVEL >= 1
     if (pj_log_get_log_func() == &Endpoint::logFunc) {
-	pj_log_set_log_func(NULL);
+        pj_log_set_log_func(NULL);
     }
 #endif
 
     /* Clean up thread descriptors */
     std::map<pj_thread_t*, pj_thread_desc*>::iterator i;
     for (i = threadDescMap.begin(); i != threadDescMap.end(); ++i) {
-	pj_thread_desc* d = (*i).second;
-	if (d != NULL)
-	    free(d);
+        pj_thread_desc* d = (*i).second;
+        if (d != NULL)
+            free(d);
     }
     threadDescMap.clear();
 
@@ -1390,8 +1407,8 @@ static void ept_log_write(int level, const char *sender,
 }
 
 void Endpoint::utilLogWrite(int prmLevel,
-			    const string &prmSender,
-			    const string &prmMsg)
+                            const string &prmSender,
+                            const string &prmMsg)
 {
     ept_log_write(prmLevel, prmSender.c_str(), "%s", prmMsg.c_str());
 }
@@ -1425,8 +1442,8 @@ Token Endpoint::utilTimerSchedule(unsigned prmMsecDelay,
 
     status = pjsua_schedule_timer(&ut->entry, &delay);
     if (status != PJ_SUCCESS) {
-	delete ut;
-	PJSUA2_CHECK_RAISE_ERROR(status);
+        delete ut;
+        PJSUA2_CHECK_RAISE_ERROR(status);
     }
 
     return (Token)ut;
@@ -1437,9 +1454,9 @@ void Endpoint::utilTimerCancel(Token prmTimerToken)
     UserTimer *ut = (UserTimer*)(void*)prmTimerToken;
 
     if (ut->signature != TIMER_SIGNATURE) {
-	PJ_LOG(1,(THIS_FILE,
-		  "Invalid timer token in Endpoint::utilTimerCancel()"));
-	return;
+        PJ_LOG(1,(THIS_FILE,
+                  "Invalid timer token in Endpoint::utilTimerCancel()"));
+        return;
     }
 
     ut->entry.id = 0;
@@ -1482,16 +1499,16 @@ pj_stun_nat_type Endpoint::natGetType() throw(Error)
 }
 
 void Endpoint::natCheckStunServers(const StringVector &servers,
-				   bool wait,
-				   Token token) throw(Error)
+                                   bool wait,
+                                   Token token) throw(Error)
 {
     pj_str_t srv[MAX_STUN_SERVERS];
     unsigned i, count = 0;
 
     for (i=0; i<servers.size() && i<MAX_STUN_SERVERS; ++i) {
-	srv[count].ptr = (char*)servers[i].c_str();
-	srv[count].slen = servers[i].size();
-	++count;
+        srv[count].ptr = (char*)servers[i].c_str();
+        srv[count].slen = servers[i].size();
+        ++count;
     }
 
     PJSUA2_CHECK_EXPR(pjsua_resolve_stun_servers(count, srv, wait, token,
@@ -1584,7 +1601,7 @@ const AudioMediaVector &Endpoint::mediaEnumPorts() const throw(Error)
 void Endpoint::mediaAdd(AudioMedia &media)
 {
     if (mediaExists(media))
-	return;
+        return;
 
     mediaList.push_back(&media);
 }
@@ -1592,19 +1609,19 @@ void Endpoint::mediaAdd(AudioMedia &media)
 void Endpoint::mediaRemove(AudioMedia &media)
 {
     AudioMediaVector::iterator it = std::find(mediaList.begin(),
-					      mediaList.end(),
-					      &media);
+                                              mediaList.end(),
+                                              &media);
 
     if (it != mediaList.end())
-	mediaList.erase(it);
+        mediaList.erase(it);
 
 }
 
 bool Endpoint::mediaExists(const AudioMedia &media) const
 {
     AudioMediaVector::const_iterator it = std::find(mediaList.begin(),
-						    mediaList.end(),
-						    &media);
+                                                    mediaList.end(),
+                                                    &media);
 
     return (it != mediaList.end());
 }
@@ -1627,17 +1644,17 @@ const CodecInfoVector &Endpoint::codecEnum() throw(Error)
     pj_enter_critical_section();
     clearCodecInfoList();
     for (unsigned i=0; i<count; ++i) {
-	CodecInfo *codec_info = new CodecInfo;
+        CodecInfo *codec_info = new CodecInfo;
 
-	codec_info->fromPj(pj_codec[i]);
-	codecInfoList.push_back(codec_info);
+        codec_info->fromPj(pj_codec[i]);
+        codecInfoList.push_back(codec_info);
     }
     pj_leave_critical_section();
     return codecInfoList;
 }
 
 void Endpoint::codecSetPriority(const string &codec_id,
-			        pj_uint8_t priority) throw(Error)
+                                pj_uint8_t priority) throw(Error)
 {
     pj_str_t codec_str = str2Pj(codec_id);
     PJSUA2_CHECK_EXPR( pjsua_codec_set_priority(&codec_str, priority) );
@@ -1654,7 +1671,7 @@ CodecParam Endpoint::codecGetParam(const string &codec_id) const throw(Error)
 }
 
 void Endpoint::codecSetParam(const string &codec_id,
-			     const CodecParam param) throw(Error)
+                             const CodecParam param) throw(Error)
 {
     pj_str_t codec_str = str2Pj(codec_id);
     pjmedia_codec_param *pj_param = (pjmedia_codec_param*)param;
@@ -1665,7 +1682,7 @@ void Endpoint::codecSetParam(const string &codec_id,
 void Endpoint::clearCodecInfoList()
 {
     for (unsigned i=0;i<codecInfoList.size();++i) {
-	delete codecInfoList[i];
+        delete codecInfoList[i];
     }
     codecInfoList.clear();
 }

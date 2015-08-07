@@ -142,6 +142,9 @@ struct OnTransportStateParam
      * The last error code related to the transport state.
      */
     pj_status_t		lastError;
+
+    SocketAddress localAddress;
+    SocketAddress remoteAddress;
 };
 
 /**

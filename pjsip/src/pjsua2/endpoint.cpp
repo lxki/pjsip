@@ -559,6 +559,26 @@ void Endpoint::on_transport_state( pjsip_transport *tp,
     prm.state = state;
     prm.lastError = info ? info->status : PJ_SUCCESS;
 
+    char buf[PJ_INET6_ADDRSTRLEN + 10];
+
+    {
+        // init local address
+        pj_ansi_snprintf(buf, sizeof(buf), "%s:%d", 
+            tp->local_name.host.ptr, 
+            tp->local_name.port);
+
+        prm.localAddress = buf;
+    }
+
+    {
+        // init remote address
+        pj_ansi_snprintf(buf, sizeof(buf), "%s:%d", 
+            tp->remote_name.host.ptr, 
+            tp->remote_name.port);
+        
+        prm.remoteAddress = buf;
+    }
+
     ep.onTransportState(prm);
 }
 

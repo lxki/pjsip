@@ -28,3 +28,5 @@ pjnath/lib/
 pjsip/lib/
 third_party/build/lib/
 third_party/lib/
+
+obj/

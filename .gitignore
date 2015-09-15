@@ -18,3 +18,13 @@ output/
 *.sdf
 *.opensdf
 *.filters
+*.pdb
+
+lib/
+pjlib-util/lib/
+pjlib/lib/
+pjmedia/lib/
+pjnath/lib/
+pjsip/lib/
+third_party/build/lib/
+third_party/lib/

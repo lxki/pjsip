@@ -11,3 +11,10 @@ sip_autoconf.h
 *.o
 bin/
 *.depend
+
+# visual studio files
+output/
+*.suo
+*.sdf
+*.opensdf
+*.filters

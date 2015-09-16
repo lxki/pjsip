@@ -40,622 +40,624 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Account.cs">
-      <Link>Account.cs</Link>
+      <Link>PJSip\Account.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountCallConfig.cs">
-      <Link>AccountCallConfig.cs</Link>
+      <Link>PJSip\AccountCallConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountConfig.cs">
-      <Link>AccountConfig.cs</Link>
+      <Link>PJSip\AccountConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountInfo.cs">
-      <Link>AccountInfo.cs</Link>
+      <Link>PJSip\AccountInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountMediaConfig.cs">
-      <Link>AccountMediaConfig.cs</Link>
+      <Link>PJSip\AccountMediaConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountMwiConfig.cs">
-      <Link>AccountMwiConfig.cs</Link>
+      <Link>PJSip\AccountMwiConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountNatConfig.cs">
-      <Link>AccountNatConfig.cs</Link>
+      <Link>PJSip\AccountNatConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountPresConfig.cs">
-      <Link>AccountPresConfig.cs</Link>
+      <Link>PJSip\AccountPresConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountRegConfig.cs">
-      <Link>AccountRegConfig.cs</Link>
+      <Link>PJSip\AccountRegConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountSipConfig.cs">
-      <Link>AccountSipConfig.cs</Link>
+      <Link>PJSip\AccountSipConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AccountVideoConfig.cs">
-      <Link>AccountVideoConfig.cs</Link>
+      <Link>PJSip\AccountVideoConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudDevManager.cs">
-      <Link>AudDevManager.cs</Link>
+      <Link>PJSip\AudDevManager.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioDevInfo.cs">
-      <Link>AudioDevInfo.cs</Link>
+      <Link>PJSip\AudioDevInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioDevInfoVector.cs">
-      <Link>AudioDevInfoVector.cs</Link>
+      <Link>PJSip\AudioDevInfoVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioMedia.cs">
-      <Link>AudioMedia.cs</Link>
+      <Link>PJSip\AudioMedia.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioMediaPlayer.cs">
-      <Link>AudioMediaPlayer.cs</Link>
+      <Link>PJSip\AudioMediaPlayer.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioMediaPlayerInfo.cs">
-      <Link>AudioMediaPlayerInfo.cs</Link>
+      <Link>PJSip\AudioMediaPlayerInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioMediaRecorder.cs">
-      <Link>AudioMediaRecorder.cs</Link>
+      <Link>PJSip\AudioMediaRecorder.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AudioMediaVector.cs">
-      <Link>AudioMediaVector.cs</Link>
+      <Link>PJSip\AudioMediaVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AuthCredInfo.cs">
-      <Link>AuthCredInfo.cs</Link>
+      <Link>PJSip\AuthCredInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\AuthCredInfoVector.cs">
-      <Link>AuthCredInfoVector.cs</Link>
+      <Link>PJSip\AuthCredInfoVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Buddy.cs">
-      <Link>Buddy.cs</Link>
+      <Link>PJSip\Buddy.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\BuddyConfig.cs">
-      <Link>BuddyConfig.cs</Link>
+      <Link>PJSip\BuddyConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\BuddyInfo.cs">
-      <Link>BuddyInfo.cs</Link>
+      <Link>PJSip\BuddyInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\BuddyVector.cs">
-      <Link>BuddyVector.cs</Link>
+      <Link>PJSip\BuddyVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Call.cs">
-      <Link>Call.cs</Link>
+      <Link>PJSip\Call.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallInfo.cs">
-      <Link>CallInfo.cs</Link>
+      <Link>PJSip\CallInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallMediaInfo.cs">
-      <Link>CallMediaInfo.cs</Link>
+      <Link>PJSip\CallMediaInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallMediaInfoVector.cs">
-      <Link>CallMediaInfoVector.cs</Link>
+      <Link>PJSip\CallMediaInfoVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallOpParam.cs">
-      <Link>CallOpParam.cs</Link>
+      <Link>PJSip\CallOpParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallSendRequestParam.cs">
-      <Link>CallSendRequestParam.cs</Link>
+      <Link>PJSip\CallSendRequestParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallSetting.cs">
-      <Link>CallSetting.cs</Link>
+      <Link>PJSip\CallSetting.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CallVidSetStreamParam.cs">
-      <Link>CallVidSetStreamParam.cs</Link>
+      <Link>PJSip\CallVidSetStreamParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CodecInfo.cs">
-      <Link>CodecInfo.cs</Link>
+      <Link>PJSip\CodecInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\CodecInfoVector.cs">
-      <Link>CodecInfoVector.cs</Link>
+      <Link>PJSip\CodecInfoVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ConfPortInfo.cs">
-      <Link>ConfPortInfo.cs</Link>
+      <Link>PJSip\ConfPortInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ContainerNode.cs">
-      <Link>ContainerNode.cs</Link>
+      <Link>PJSip\ContainerNode.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Endpoint.cs">
-      <Link>Endpoint.cs</Link>
+      <Link>PJSip\Endpoint.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\EpConfig.cs">
-      <Link>EpConfig.cs</Link>
+      <Link>PJSip\EpConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Error.cs">
-      <Link>Error.cs</Link>
+      <Link>PJSip\Error.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\FindBuddyMatch.cs">
-      <Link>FindBuddyMatch.cs</Link>
+      <Link>PJSip\FindBuddyMatch.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\IntVector.cs">
-      <Link>IntVector.cs</Link>
+      <Link>PJSip\IntVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\JbufState.cs">
-      <Link>JbufState.cs</Link>
+      <Link>PJSip\JbufState.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\JsonDocument.cs">
-      <Link>JsonDocument.cs</Link>
+      <Link>PJSip\JsonDocument.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\LogConfig.cs">
-      <Link>LogConfig.cs</Link>
+      <Link>PJSip\LogConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\LogEntry.cs">
-      <Link>LogEntry.cs</Link>
+      <Link>PJSip\LogEntry.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\LogWriter.cs">
-      <Link>LogWriter.cs</Link>
+      <Link>PJSip\LogWriter.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\LossType.cs">
-      <Link>LossType.cs</Link>
+      <Link>PJSip\LossType.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MathStat.cs">
-      <Link>MathStat.cs</Link>
+      <Link>PJSip\MathStat.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Media.cs">
-      <Link>Media.cs</Link>
+      <Link>PJSip\Media.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaConfig.cs">
-      <Link>MediaConfig.cs</Link>
+      <Link>PJSip\MediaConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaCoordinate.cs">
-      <Link>MediaCoordinate.cs</Link>
+      <Link>PJSip\MediaCoordinate.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaEvent.cs">
-      <Link>MediaEvent.cs</Link>
+      <Link>PJSip\MediaEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaEventData.cs">
-      <Link>MediaEventData.cs</Link>
+      <Link>PJSip\MediaEventData.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaFmtChangedEvent.cs">
-      <Link>MediaFmtChangedEvent.cs</Link>
+      <Link>PJSip\MediaFmtChangedEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaFormat.cs">
-      <Link>MediaFormat.cs</Link>
+      <Link>PJSip\MediaFormat.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaFormatAudio.cs">
-      <Link>MediaFormatAudio.cs</Link>
+      <Link>PJSip\MediaFormatAudio.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaFormatVector.cs">
-      <Link>MediaFormatVector.cs</Link>
+      <Link>PJSip\MediaFormatVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaFormatVideo.cs">
-      <Link>MediaFormatVideo.cs</Link>
+      <Link>PJSip\MediaFormatVideo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaSize.cs">
-      <Link>MediaSize.cs</Link>
+      <Link>PJSip\MediaSize.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\MediaTransportInfo.cs">
-      <Link>MediaTransportInfo.cs</Link>
+      <Link>PJSip\MediaTransportInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallMediaEventParam.cs">
-      <Link>OnCallMediaEventParam.cs</Link>
+      <Link>PJSip\OnCallMediaEventParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallMediaStateParam.cs">
-      <Link>OnCallMediaStateParam.cs</Link>
+      <Link>PJSip\OnCallMediaStateParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallMediaTransportStateParam.cs">
-      <Link>OnCallMediaTransportStateParam.cs</Link>
+      <Link>PJSip\OnCallMediaTransportStateParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallRedirectedParam.cs">
-      <Link>OnCallRedirectedParam.cs</Link>
+      <Link>PJSip\OnCallRedirectedParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallReplacedParam.cs">
-      <Link>OnCallReplacedParam.cs</Link>
+      <Link>PJSip\OnCallReplacedParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallReplaceRequestParam.cs">
-      <Link>OnCallReplaceRequestParam.cs</Link>
+      <Link>PJSip\OnCallReplaceRequestParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallRxOfferParam.cs">
-      <Link>OnCallRxOfferParam.cs</Link>
+      <Link>PJSip\OnCallRxOfferParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallSdpCreatedParam.cs">
-      <Link>OnCallSdpCreatedParam.cs</Link>
+      <Link>PJSip\OnCallSdpCreatedParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallStateParam.cs">
-      <Link>OnCallStateParam.cs</Link>
+      <Link>PJSip\OnCallStateParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallTransferRequestParam.cs">
-      <Link>OnCallTransferRequestParam.cs</Link>
+      <Link>PJSip\OnCallTransferRequestParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallTransferStatusParam.cs">
-      <Link>OnCallTransferStatusParam.cs</Link>
+      <Link>PJSip\OnCallTransferStatusParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCallTsxStateParam.cs">
-      <Link>OnCallTsxStateParam.cs</Link>
+      <Link>PJSip\OnCallTsxStateParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnCreateMediaTransportParam.cs">
-      <Link>OnCreateMediaTransportParam.cs</Link>
+      <Link>PJSip\OnCreateMediaTransportParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnDtmfDigitParam.cs">
-      <Link>OnDtmfDigitParam.cs</Link>
+      <Link>PJSip\OnDtmfDigitParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnIncomingCallParam.cs">
-      <Link>OnIncomingCallParam.cs</Link>
+      <Link>PJSip\OnIncomingCallParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnIncomingSubscribeParam.cs">
-      <Link>OnIncomingSubscribeParam.cs</Link>
+      <Link>PJSip\OnIncomingSubscribeParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnInstantMessageParam.cs">
-      <Link>OnInstantMessageParam.cs</Link>
+      <Link>PJSip\OnInstantMessageParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnInstantMessageStatusParam.cs">
-      <Link>OnInstantMessageStatusParam.cs</Link>
+      <Link>PJSip\OnInstantMessageStatusParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnMwiInfoParam.cs">
-      <Link>OnMwiInfoParam.cs</Link>
+      <Link>PJSip\OnMwiInfoParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnNatCheckStunServersCompleteParam.cs">
-      <Link>OnNatCheckStunServersCompleteParam.cs</Link>
+      <Link>PJSip\OnNatCheckStunServersCompleteParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnNatDetectionCompleteParam.cs">
-      <Link>OnNatDetectionCompleteParam.cs</Link>
+      <Link>PJSip\OnNatDetectionCompleteParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnRegStartedParam.cs">
-      <Link>OnRegStartedParam.cs</Link>
+      <Link>PJSip\OnRegStartedParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnRegStateParam.cs">
-      <Link>OnRegStateParam.cs</Link>
+      <Link>PJSip\OnRegStateParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnSelectAccountParam.cs">
-      <Link>OnSelectAccountParam.cs</Link>
+      <Link>PJSip\OnSelectAccountParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnStartMediaTransportParam.cs">
-      <Link>OnStartMediaTransportParam.cs</Link>
+      <Link>PJSip\OnStartMediaTransportParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnStreamCreatedParam.cs">
-      <Link>OnStreamCreatedParam.cs</Link>
+      <Link>PJSip\OnStreamCreatedParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnStreamDestroyedParam.cs">
-      <Link>OnStreamDestroyedParam.cs</Link>
+      <Link>PJSip\OnStreamDestroyedParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnTimerParam.cs">
-      <Link>OnTimerParam.cs</Link>
+      <Link>PJSip\OnTimerParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnTransportStateParam.cs">
-      <Link>OnTransportStateParam.cs</Link>
+      <Link>PJSip\OnTransportStateParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\OnTypingIndicationParam.cs">
-      <Link>OnTypingIndicationParam.cs</Link>
+      <Link>PJSip\OnTypingIndicationParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\PendingJob.cs">
-      <Link>PendingJob.cs</Link>
+      <Link>PJSip\PendingJob.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\PersistentDocument.cs">
-      <Link>PersistentDocument.cs</Link>
+      <Link>PJSip\PersistentDocument.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\PersistentObject.cs">
-      <Link>PersistentObject.cs</Link>
+      <Link>PJSip\PersistentObject.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_aud_dev_cap.cs">
-      <Link>pjmedia_aud_dev_cap.cs</Link>
+      <Link>PJSip\pjmedia_aud_dev_cap.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_aud_dev_route.cs">
-      <Link>pjmedia_aud_dev_route.cs</Link>
+      <Link>PJSip\pjmedia_aud_dev_route.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_dir.cs">
-      <Link>pjmedia_dir.cs</Link>
+      <Link>PJSip\pjmedia_dir.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed_fix\pjmedia_event_type.cs">
-      <Link>pjmedia_event_type.cs</Link>
+      <Link>PJSip\pjmedia_event_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_file_player_option.cs">
-      <Link>pjmedia_file_player_option.cs</Link>
+      <Link>PJSip\pjmedia_file_player_option.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_file_writer_option.cs">
-      <Link>pjmedia_file_writer_option.cs</Link>
+      <Link>PJSip\pjmedia_file_writer_option.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed_fix\pjmedia_format_id.cs">
-      <Link>pjmedia_format_id.cs</Link>
+      <Link>PJSip\pjmedia_format_id.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_srtp_use.cs">
-      <Link>pjmedia_srtp_use.cs</Link>
+      <Link>PJSip\pjmedia_srtp_use.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_tone_desc.cs">
-      <Link>pjmedia_tone_desc.cs</Link>
+      <Link>PJSip\pjmedia_tone_desc.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_tone_digit.cs">
-      <Link>pjmedia_tone_digit.cs</Link>
+      <Link>PJSip\pjmedia_tone_digit.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_tone_digit_map.cs">
-      <Link>pjmedia_tone_digit_map.cs</Link>
+      <Link>PJSip\pjmedia_tone_digit_map.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_tp_proto.cs">
-      <Link>pjmedia_tp_proto.cs</Link>
+      <Link>PJSip\pjmedia_tp_proto.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_type.cs">
-      <Link>pjmedia_type.cs</Link>
+      <Link>PJSip\pjmedia_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_vid_dev_std_index.cs">
-      <Link>pjmedia_vid_dev_std_index.cs</Link>
+      <Link>PJSip\pjmedia_vid_dev_std_index.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjmedia_vid_stream_rc_method.cs">
-      <Link>pjmedia_vid_stream_rc_method.cs</Link>
+      <Link>PJSip\pjmedia_vid_stream_rc_method.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjrpid_activity.cs">
-      <Link>pjrpid_activity.cs</Link>
+      <Link>PJSip\pjrpid_activity.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_cred_data_type.cs">
-      <Link>pjsip_cred_data_type.cs</Link>
+      <Link>PJSip\pjsip_cred_data_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_dialog_cap_status.cs">
-      <Link>pjsip_dialog_cap_status.cs</Link>
+      <Link>PJSip\pjsip_dialog_cap_status.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_event_id_e.cs">
-      <Link>pjsip_event_id_e.cs</Link>
+      <Link>PJSip\pjsip_event_id_e.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_evsub_state.cs">
-      <Link>pjsip_evsub_state.cs</Link>
+      <Link>PJSip\pjsip_evsub_state.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_hdr_e.cs">
-      <Link>pjsip_hdr_e.cs</Link>
+      <Link>PJSip\pjsip_hdr_e.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_inv_state.cs">
-      <Link>pjsip_inv_state.cs</Link>
+      <Link>PJSip\pjsip_inv_state.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_redirect_op.cs">
-      <Link>pjsip_redirect_op.cs</Link>
+      <Link>PJSip\pjsip_redirect_op.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_role_e.cs">
-      <Link>pjsip_role_e.cs</Link>
+      <Link>PJSip\pjsip_role_e.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_ssl_method.cs">
-      <Link>pjsip_ssl_method.cs</Link>
+      <Link>PJSip\pjsip_ssl_method.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_status_code.cs">
-      <Link>pjsip_status_code.cs</Link>
+      <Link>PJSip\pjsip_status_code.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_transport_flags_e.cs">
-      <Link>pjsip_transport_flags_e.cs</Link>
+      <Link>PJSip\pjsip_transport_flags_e.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_transport_state.cs">
-      <Link>pjsip_transport_state.cs</Link>
+      <Link>PJSip\pjsip_transport_state.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_transport_type_e.cs">
-      <Link>pjsip_transport_type_e.cs</Link>
+      <Link>PJSip\pjsip_transport_type_e.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsip_tsx_state_e.cs">
-      <Link>pjsip_tsx_state_e.cs</Link>
+      <Link>PJSip\pjsip_tsx_state_e.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua2.cs">
-      <Link>pjsua2.cs</Link>
+      <Link>PJSip\pjsua2.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua2PINVOKE.cs">
-      <Link>pjsua2PINVOKE.cs</Link>
+      <Link>PJSip\pjsua2PINVOKE.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_100rel_use.cs">
-      <Link>pjsua_100rel_use.cs</Link>
+      <Link>PJSip\pjsua_100rel_use.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_buddy_status.cs">
-      <Link>pjsua_buddy_status.cs</Link>
+      <Link>PJSip\pjsua_buddy_status.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_call_flag.cs">
-      <Link>pjsua_call_flag.cs</Link>
+      <Link>PJSip\pjsua_call_flag.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_call_hold_type.cs">
-      <Link>pjsua_call_hold_type.cs</Link>
+      <Link>PJSip\pjsua_call_hold_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_call_media_status.cs">
-      <Link>pjsua_call_media_status.cs</Link>
+      <Link>PJSip\pjsua_call_media_status.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_call_vid_strm_op.cs">
-      <Link>pjsua_call_vid_strm_op.cs</Link>
+      <Link>PJSip\pjsua_call_vid_strm_op.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_create_media_transport_flag.cs">
-      <Link>pjsua_create_media_transport_flag.cs</Link>
+      <Link>PJSip\pjsua_create_media_transport_flag.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_destroy_flag.cs">
-      <Link>pjsua_destroy_flag.cs</Link>
+      <Link>PJSip\pjsua_destroy_flag.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_invalid_id_const_.cs">
-      <Link>pjsua_invalid_id_const_.cs</Link>
+      <Link>PJSip\pjsua_invalid_id_const_.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_ipv6_use.cs">
-      <Link>pjsua_ipv6_use.cs</Link>
+      <Link>PJSip\pjsua_ipv6_use.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_med_tp_st.cs">
-      <Link>pjsua_med_tp_st.cs</Link>
+      <Link>PJSip\pjsua_med_tp_st.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_sip_timer_use.cs">
-      <Link>pjsua_sip_timer_use.cs</Link>
+      <Link>PJSip\pjsua_sip_timer_use.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_state.cs">
-      <Link>pjsua_state.cs</Link>
+      <Link>PJSip\pjsua_state.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_stun_use.cs">
-      <Link>pjsua_stun_use.cs</Link>
+      <Link>PJSip\pjsua_stun_use.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pjsua_vid_req_keyframe_method.cs">
-      <Link>pjsua_vid_req_keyframe_method.cs</Link>
+      <Link>PJSip\pjsua_vid_req_keyframe_method.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_constants_.cs">
-      <Link>pj_constants_.cs</Link>
+      <Link>PJSip\pj_constants_.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_file_access.cs">
-      <Link>pj_file_access.cs</Link>
+      <Link>PJSip\pj_file_access.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_log_decoration.cs">
-      <Link>pj_log_decoration.cs</Link>
+      <Link>PJSip\pj_log_decoration.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_qos_flag.cs">
-      <Link>pj_qos_flag.cs</Link>
+      <Link>PJSip\pj_qos_flag.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_qos_params.cs">
-      <Link>pj_qos_params.cs</Link>
+      <Link>PJSip\pj_qos_params.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_qos_type.cs">
-      <Link>pj_qos_type.cs</Link>
+      <Link>PJSip\pj_qos_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_qos_wmm_prio.cs">
-      <Link>pj_qos_wmm_prio.cs</Link>
+      <Link>PJSip\pj_qos_wmm_prio.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_ssl_cipher.cs">
-      <Link>pj_ssl_cipher.cs</Link>
+      <Link>PJSip\pj_ssl_cipher.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_ssl_sock_proto.cs">
-      <Link>pj_ssl_sock_proto.cs</Link>
+      <Link>PJSip\pj_ssl_sock_proto.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_stun_nat_type.cs">
-      <Link>pj_stun_nat_type.cs</Link>
+      <Link>PJSip\pj_stun_nat_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\pj_turn_tp_type.cs">
-      <Link>pj_turn_tp_type.cs</Link>
+      <Link>PJSip\pj_turn_tp_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\PresenceStatus.cs">
-      <Link>PresenceStatus.cs</Link>
+      <Link>PJSip\PresenceStatus.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\PresNotifyParam.cs">
-      <Link>PresNotifyParam.cs</Link>
+      <Link>PJSip\PresNotifyParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\RtcpSdes.cs">
-      <Link>RtcpSdes.cs</Link>
+      <Link>PJSip\RtcpSdes.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\RtcpStat.cs">
-      <Link>RtcpStat.cs</Link>
+      <Link>PJSip\RtcpStat.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\RtcpStreamStat.cs">
-      <Link>RtcpStreamStat.cs</Link>
+      <Link>PJSip\RtcpStreamStat.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\RxMsgEvent.cs">
-      <Link>RxMsgEvent.cs</Link>
+      <Link>PJSip\RxMsgEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SdpSession.cs">
-      <Link>SdpSession.cs</Link>
+      <Link>PJSip\SdpSession.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SendInstantMessageParam.cs">
-      <Link>SendInstantMessageParam.cs</Link>
+      <Link>PJSip\SendInstantMessageParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SendTypingIndicationParam.cs">
-      <Link>SendTypingIndicationParam.cs</Link>
+      <Link>PJSip\SendTypingIndicationParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipEvent.cs">
-      <Link>SipEvent.cs</Link>
+      <Link>PJSip\SipEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipEventBody.cs">
-      <Link>SipEventBody.cs</Link>
+      <Link>PJSip\SipEventBody.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipHeader.cs">
-      <Link>SipHeader.cs</Link>
+      <Link>PJSip\SipHeader.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipHeaderVector.cs">
-      <Link>SipHeaderVector.cs</Link>
+      <Link>PJSip\SipHeaderVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipMediaType.cs">
-      <Link>SipMediaType.cs</Link>
+      <Link>PJSip\SipMediaType.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipMultipartPart.cs">
-      <Link>SipMultipartPart.cs</Link>
+      <Link>PJSip\SipMultipartPart.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipMultipartPartVector.cs">
-      <Link>SipMultipartPartVector.cs</Link>
+      <Link>PJSip\SipMultipartPartVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipRxData.cs">
-      <Link>SipRxData.cs</Link>
+      <Link>PJSip\SipRxData.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipTransaction.cs">
-      <Link>SipTransaction.cs</Link>
+      <Link>PJSip\SipTransaction.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipTxData.cs">
-      <Link>SipTxData.cs</Link>
+      <Link>PJSip\SipTxData.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SipTxOption.cs">
-      <Link>SipTxOption.cs</Link>
+      <Link>PJSip\SipTxOption.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\StreamInfo.cs">
-      <Link>StreamInfo.cs</Link>
+      <Link>PJSip\StreamInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\StreamStat.cs">
-      <Link>StreamStat.cs</Link>
+      <Link>PJSip\StreamStat.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\StringVector.cs">
-      <Link>StringVector.cs</Link>
+      <Link>PJSip\StringVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SWIGTYPE_p_pjmedia_vid_dev_hwnd_type.cs">
-      <Link>SWIGTYPE_p_pjmedia_vid_dev_hwnd_type.cs</Link>
+      <Link>PJSip\SWIGTYPE_p_pjmedia_vid_dev_hwnd_type.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SWIGTYPE_p_pj_bool_t.cs">
-      <Link>SWIGTYPE_p_pj_bool_t.cs</Link>
+      <Link>PJSip\SWIGTYPE_p_pj_bool_t.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SWIGTYPE_p_pj_ssize_t.cs">
-      <Link>SWIGTYPE_p_pj_ssize_t.cs</Link>
+      <Link>PJSip\SWIGTYPE_p_pj_ssize_t.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SWIGTYPE_p_p_void.cs">
-      <Link>SWIGTYPE_p_p_void.cs</Link>
+      <Link>PJSip\SWIGTYPE_p_p_void.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\SWIGTYPE_p_void.cs">
-      <Link>SWIGTYPE_p_void.cs</Link>
+      <Link>PJSip\SWIGTYPE_p_void.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TimerEvent.cs">
-      <Link>TimerEvent.cs</Link>
+      <Link>PJSip\TimerEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TimeVal.cs">
-      <Link>TimeVal.cs</Link>
+      <Link>PJSip\TimeVal.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TlsConfig.cs">
-      <Link>TlsConfig.cs</Link>
+      <Link>PJSip\TlsConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneDesc.cs">
-      <Link>ToneDesc.cs</Link>
+      <Link>PJSip\ToneDesc.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneDescVector.cs">
-      <Link>ToneDescVector.cs</Link>
+      <Link>PJSip\ToneDescVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneDigit.cs">
-      <Link>ToneDigit.cs</Link>
+      <Link>PJSip\ToneDigit.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneDigitMapDigit.cs">
-      <Link>ToneDigitMapDigit.cs</Link>
+      <Link>PJSip\ToneDigitMapDigit.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneDigitMapVector.cs">
-      <Link>ToneDigitMapVector.cs</Link>
+      <Link>PJSip\ToneDigitMapVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneDigitVector.cs">
-      <Link>ToneDigitVector.cs</Link>
+      <Link>PJSip\ToneDigitVector.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\ToneGenerator.cs">
-      <Link>ToneGenerator.cs</Link>
+      <Link>PJSip\ToneGenerator.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TransportConfig.cs">
-      <Link>TransportConfig.cs</Link>
+      <Link>PJSip\TransportConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TransportInfo.cs">
-      <Link>TransportInfo.cs</Link>
+      <Link>PJSip\TransportInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TsxStateEvent.cs">
-      <Link>TsxStateEvent.cs</Link>
+      <Link>PJSip\TsxStateEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TsxStateEventSrc.cs">
-      <Link>TsxStateEventSrc.cs</Link>
+      <Link>PJSip\TsxStateEventSrc.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TxErrorEvent.cs">
-      <Link>TxErrorEvent.cs</Link>
+      <Link>PJSip\TxErrorEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\TxMsgEvent.cs">
-      <Link>TxMsgEvent.cs</Link>
+      <Link>PJSip\TxMsgEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\UaConfig.cs">
-      <Link>UaConfig.cs</Link>
+      <Link>PJSip\UaConfig.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\UserEvent.cs">
-      <Link>UserEvent.cs</Link>
+      <Link>PJSip\UserEvent.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\Version.cs">
-      <Link>Version.cs</Link>
+      <Link>PJSip\Version.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\VideoPreview.cs">
-      <Link>VideoPreview.cs</Link>
+      <Link>PJSip\VideoPreview.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\VideoPreviewOpParam.cs">
-      <Link>VideoPreviewOpParam.cs</Link>
+      <Link>PJSip\VideoPreviewOpParam.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\VideoWindow.cs">
-      <Link>VideoWindow.cs</Link>
+      <Link>PJSip\VideoWindow.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\VideoWindowHandle.cs">
-      <Link>VideoWindowHandle.cs</Link>
+      <Link>PJSip\VideoWindowHandle.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\VideoWindowInfo.cs">
-      <Link>VideoWindowInfo.cs</Link>
+      <Link>PJSip\VideoWindowInfo.cs</Link>
     </Compile>
     <Compile Include="..\pjsip-apps\src\swig\csharp\managed\WindowHandle.cs">
-      <Link>WindowHandle.cs</Link>
+      <Link>PJSip\WindowHandle.cs</Link>
     </Compile>
+    <Compile Include="PJSipLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

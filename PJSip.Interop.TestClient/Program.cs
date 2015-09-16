@@ -11,6 +11,8 @@ namespace PJSip.Interop.TestClient
     {
         static void Main(string[] args)
         {
+            PJSipLib.Init();
+
             // Create endpoint
             Endpoint ep = new Endpoint();
             ep.libCreate();

@@ -124,9 +124,13 @@
 	<Import Project="..\..\build\vs\pjproject-vs12-win64-common-defaults.props" />
     <Import Project="..\..\build\vs\pjproject-vs12-debug-static-defaults.props" />    
   </ImportGroup>
+  <PropertyGroup>
+    <TargetName>pjsua2</TargetName>
+    <OutDir>..\bin\$(Configuration)\$(PlatformShortName)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <OutputFile>..\lib\$(ProjectName)-$(TargetCPU)-$(Platform)-vc$(VSVer)-$(Configuration)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
@@ -140,6 +144,9 @@
       <AdditionalDependencies>Iphlpapi.lib;dsound.lib;dxguid.lib;netapi32.lib;mswsock.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;ole32.lib;user32.lib;gdi32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>call pjsua2_net_native_postbuild.bat $(OpenSSL) $(OutDir)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\swig\csharp\native\pjsua2_wrap.h" />

@@ -11,19 +11,24 @@ namespace PJSip.Interop.TestClient
     {
         static void Main(string[] args)
         {
+            Test1();
+        }
+
+        static void Test1()
+        {
             PJSipLib.Init();
 
             // Create endpoint
-            Endpoint ep = new Endpoint();
-            ep.libCreate();
+            var endpoint = new Endpoint();
+            endpoint.libCreate();
             // Initialize endpoint
             EpConfig epConfig = new EpConfig();
-            ep.libInit(epConfig);
+            endpoint.libInit(epConfig);
             // Create SIP transport. Error handling sample is shown
             TransportConfig sipTpConfig = new TransportConfig {port = 5060};
-            ep.transportCreate(pjsip_transport_type_e.PJSIP_TRANSPORT_UDP, sipTpConfig);
+            endpoint.transportCreate(pjsip_transport_type_e.PJSIP_TRANSPORT_UDP, sipTpConfig);
             // Start the library
-            ep.libStart();
+            endpoint.libStart();
 
             AccountConfig acfg = new AccountConfig();
             acfg.idUri = "sip:test@pjsip.org";
@@ -34,16 +39,16 @@ namespace PJSip.Interop.TestClient
             MyAccount acc = new MyAccount();
             acc.create(acfg);
             // Here we don't have anything else to do..
-            Thread.Sleep(10000);
+            Thread.Sleep(1000);
             /* Explicitly delete the account.
              * This is to avoid GC to delete the endpoint first before deleting
              * the account.
              */
-            acc.Dispose();
+            //acc.Dispose();
 
             // Explicitly destroy and delete endpoint
-            ep.libDestroy();
-            ep.Dispose();
+            //ep.libDestroy();
+            endpoint.Dispose();
         }
     }
 

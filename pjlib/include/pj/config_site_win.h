@@ -1,0 +1,1 @@
+#define PJ_HAS_SSL_SOCK 1

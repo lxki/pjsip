@@ -84,9 +84,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pjsua2_lib", "pjsip\build\p
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pjsua2_net_native", "pjsip-apps\build\pjsua2_net_native.vcxproj", "{BEF2CC25-0243-40CF-8F24-3219A9D7F082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PJSip.Interop", "PJSip.Interop\PJSip.Interop.csproj", "{302A77CB-EE44-4679-B71B-9486D11209AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PJSip.Interop", "pjsip-apps\src\PJSip.Interop\PJSip.Interop.csproj", "{302A77CB-EE44-4679-B71B-9486D11209AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BEF2CC25-0243-40CF-8F24-3219A9D7F082} = {BEF2CC25-0243-40CF-8F24-3219A9D7F082}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PJSip.Interop.TestClient", "PJSip.Interop.TestClient\PJSip.Interop.TestClient.csproj", "{AD78ABAE-E720-4634-86DC-C4A0121CC7F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PJSip.Interop.TestClient", "pjsip-apps\src\PJSip.Interop.TestClient\PJSip.Interop.TestClient.csproj", "{AD78ABAE-E720-4634-86DC-C4A0121CC7F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1606,6 +1609,7 @@ Global
 		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release|Windows Mobile 6 Professional SDK (ARMV4I).ActiveCfg = Release|Win32
 		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release|Windows Mobile 6 Standard SDK (ARMV4I).ActiveCfg = Release|Win32
 		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release|x64.ActiveCfg = Release|x64
+		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release|x64.Build.0 = Release|x64
 		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release-Dynamic|Any CPU.ActiveCfg = Release-Dynamic|Win32
 		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release-Dynamic|Mixed Platforms.ActiveCfg = Release-Dynamic|Win32
 		{4BF51C21-5A30-423B-82FE-1ED410E5769D}.Release-Dynamic|Mixed Platforms.Build.0 = Release-Dynamic|Win32

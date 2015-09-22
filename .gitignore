@@ -19,6 +19,7 @@ output/
 *.opensdf
 *.filters
 *.pdb
+*.user
 
 lib/
 pjlib-util/lib/

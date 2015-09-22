@@ -43,6 +43,8 @@ SRTP_LIB = ..\..\third_party\lib\libsrtp-$(TARGET)$(LIBEXT)
 G7221_LIB = ..\..\third_party\lib\libg7221codec-$(TARGET)$(LIBEXT)
 BASECLASSES_LIB = ..\..\third_party\lib\libbaseclasses-$(TARGET)$(LIBEXT)
 
+SSL_LIBS = ssleay32.lib libeay32.lib
+
 THIRD_PARTY_LIBS = $(GSM_LIB) $(ILBC_LIB) $(PORTAUDIO_LIB) $(RESAMPLE_LIB) \
 				   $(SPEEX_LIB) $(SRTP_LIB) $(G7221_LIB) $(BASECLASSES_LIB)
 
@@ -59,9 +61,11 @@ CFLAGS 	= $(TARGET_FLAGS) \
 	  -I..\..\pjlib-util\include \
 	  -I..\..\pjmedia\include \
 	  -I..\..\pjnath/include
-LDFLAGS = $(BUILD_FLAGS) $(LIBS) \
+LDFLAGS = $(BUILD_FLAGS) \
+	  /link /LIBPATH:"$(LIB)" \
+	  $(LIBS) $(SSL_LIBS) \
 	  Iphlpapi.lib ole32.lib user32.lib dsound.lib dxguid.lib netapi32.lib \
-	  mswsock.lib ws2_32.lib gdi32.lib advapi32.lib oleaut32.lib
+	  mswsock.lib ws2_32.lib gdi32.lib advapi32.lib oleaut32.lib 
 
 SRCDIR = ..\src\samples
 OBJDIR = .\output\samples-$(TARGET)

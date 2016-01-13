@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>PJSip.Interop</id>
-    <version>0.7.1</version>
+    <version>0.7.3</version>
     <title>PJSip</title>
     <authors>Anatoly Krivolapov</authors>
     <owners>SafeChats</owners>

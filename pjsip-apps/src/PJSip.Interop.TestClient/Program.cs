@@ -14,7 +14,7 @@ namespace PJSip.Interop.TestClient
             Test1();
         }
 
-        static void Test1()
+        private static void Test1()
         {
             PJSipLib.Init();
 
@@ -31,7 +31,7 @@ namespace PJSip.Interop.TestClient
             endpoint.libStart();
 
             AccountConfig acfg = new AccountConfig();
-            acfg.idUri = "sip:test@pjsip.org";
+            acfg.idUri = "sip:123308@safechats.com";
             acfg.regConfig.registrarUri = "sip:pjsip.org";
             AuthCredInfo cred = new AuthCredInfo("digest", "*", "test", 0, "secret");
             acfg.sipConfig.authCreds.Add(cred);
@@ -40,7 +40,18 @@ namespace PJSip.Interop.TestClient
             acc.create(acfg);
             // Here we don't have anything else to do..
             Thread.Sleep(1000);
-            /* Explicitly delete the account.
+
+            var call = new Call(acc, -1);
+            try
+            {
+                call.makeCall("sip:123796@safechats.com;transport=tls", new CallOpParam(true));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("!!!" + e);
+            }   
+
+        /* Explicitly delete the account.
              * This is to avoid GC to delete the endpoint first before deleting
              * the account.
              */

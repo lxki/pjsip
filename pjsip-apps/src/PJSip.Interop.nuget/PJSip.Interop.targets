@@ -24,7 +24,7 @@
       <Output TaskParameter="DestinationFiles" ItemName="FileWrites" />
     </Copy>
     <Copy SourceFiles="@(NativeBinary)"
-          DestinationFiles="@(NativeBinary->'$(OutDir)\%(TargetPath)\%(Filename).%(Extension)')"
+          DestinationFiles="@(NativeBinary->'$(OutDir)\%(TargetPath)\%(Filename)%(Extension)')"
           Condition="'%(Extension)'!='.dll'">
       <Output TaskParameter="DestinationFiles" ItemName="FileWrites" />
     </Copy>
